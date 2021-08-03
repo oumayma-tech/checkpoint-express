@@ -2,12 +2,12 @@ const express=require('express')
 const app=express();
 const path=require('path')
 
-
+const date=new Date()
 
 const logger=(req,res,next)=>{
-    const date=new date()
-    if(date.getdate()===0 || date.getdate()===6 || date.gethours()<9 || date.gethours>16){
-        res.senFile(__dirname+'folder/time.html')
+    
+    if(date.getDay()===0 || date.getDay()===6 || date.getHours()<10 || date.getHours()>16){
+        res.sendFile(__dirname+'/folder/time.html')
     }else next()
 }
 app.use(logger)
